@@ -59,6 +59,13 @@ ul.slides img{
    position: relative;
 }
 
+
+ul.slides li{
+  position: absolute;
+  z-index: 50;
+}
+
+
 ul.thumbs li a:hover span{
     position: absolute;
     z-index: 101;
@@ -91,4 +98,33 @@ ul.thumbs li:first-child a:hover span{
 
 ul.thumbs li:first-child a:hover span:before{
   left: 25px;
+}
+
+
+/* Animation for slider*/
+
+@keyframes slide{
+   0% { left: -500px;}
+   100% {left:0}
+}
+
+ul.slides li:target{
+  z-index: 100;
+
+  animation-name:slide;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+/*not a target*/
+
+@keyframes noTarget{
+  0% {z-index: 75;}
+  100% {z-index: 75;}
+}
+
+ul.slides li:not(:target){
+  animation-name: noTarget;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
 }
